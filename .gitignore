@@ -1,0 +1,12 @@
+*.tfstate
+*.tfstate.backup
+.terraform/environment
+terraform.tfplan
+terraform.tfstate
+./*.tfstate
+.terraform/
+.terraform.tfstate.lock.info
+workspace-variables/*.tfvars
+*.tpl
+
+.DS_Store

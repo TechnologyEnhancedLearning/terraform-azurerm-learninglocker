@@ -1,0 +1,57 @@
+# Provider
+
+subscription_id = 
+tenant_id = 
+client_id = 
+client_secret =
+
+# Platform
+
+resource_group_name =
+location =
+tags = 
+
+# Load Balancer
+
+prefix =
+lb_port = 
+remote_port =
+
+# Virtual Network
+
+address_space =
+subnet_prefixes =
+subnet_names =
+
+# Network Security Group
+
+security_group_name
+predefined rules =
+custom_rules =
+
+# Public IP Address
+
+public_ip_name =
+public_ip_address_allocation =
+
+# VM Scale Set
+
+admin_username =
+admin_password = 
+vm_size = 
+nb_instances =
+vm_os_simple = 
+
+# Redis
+
+redis_name = 
+capacity = 
+family =
+sku_name =
+enable_non_ssl_port =
+
+# Storage Account
+
+account_replication_type = 
+account_tier = 
+s
