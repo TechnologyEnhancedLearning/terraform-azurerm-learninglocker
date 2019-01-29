@@ -151,3 +151,5 @@ variable "enable_accelerated_networking" {
   description = "(Optional) Enable accelerated networking on Network interface"
   default     = "false"
 }
+
+variable "network_security_group_id" {}

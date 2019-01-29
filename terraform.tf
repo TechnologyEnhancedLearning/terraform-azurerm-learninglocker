@@ -2,8 +2,17 @@ terraform {
   required_version = "~> 0.11"
 
   required_providers {
-    azurerm  = "~> 1.20.0"
-    template = "~> 1.0"
+    azurerm = "~> 1.20.0"
+  }
+
+  /*
+                    Store infrastructure state in a remote store (instead of local machine):
+                    https://www.terraform.io/docs/state/purpose.html
+                      */
+  backend "azurerm" {
+    container_name       = "terraform-state-001"
+    key                  = "ll/terraform.tfstate"
+    storage_account_name = "llterraform"
   }
 }
 
@@ -45,7 +54,7 @@ module "networksecuritygroup" {
 
   # predefined_rules = ["${var.predefined_rules}"]
   # custom_rules = [
-  #   "${var.custom_rules}",
+  # "${var.custom_rules}",
   # ]
 
   tags = "${merge(var.tags, map("resourceType", "nsg"))}"
@@ -107,10 +116,10 @@ module "compute" {
   vnet_subnet_id                = "${module.network.vnet_subnets[2]}"
   boot_diagnostics              = "${var.boot_diagnostics}"
   delete_os_disk_on_termination = "${var.delete_os_disk_on_termination}"
-
-  data_disk         = "${var.data_disk}"
-  data_disk_size_gb = "${var.data_disk_size_gb}"
-  data_sa_type      = "${var.data_sa_type}"
+  network_security_group_id     = "${module.networksecuritygroup.network_security_group_id}"
+  data_disk                     = "${var.data_disk}"
+  data_disk_size_gb             = "${var.data_disk_size_gb}"
+  data_sa_type                  = "${var.data_sa_type}"
 
   tags = "${merge(var.tags, map("resourceType", "compute"))}"
 }
